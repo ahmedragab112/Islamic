@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:islamic_app/model/my_them_data.dart';
-import 'package:islamic_app/taps/ahadeth_page.dart';
-import 'package:islamic_app/taps/moshaf_page.dart';
-import 'package:islamic_app/taps/radio_page.dart';
-import 'package:islamic_app/taps/sebha_page.dart';
-import 'package:islamic_app/taps/setting_page.dart';
+import 'package:islamic_app/pages/taps/ahadeth_page.dart';
+import 'package:islamic_app/pages/taps/moshaf_page.dart';
+import 'package:islamic_app/pages/taps/radio_page.dart';
+import 'package:islamic_app/pages/taps/sebha_page.dart';
+import 'package:islamic_app/pages/taps/setting_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
   static const String routeName = 'homePage';
 
   @override

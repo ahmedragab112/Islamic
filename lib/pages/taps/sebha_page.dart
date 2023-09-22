@@ -15,6 +15,7 @@ class _SebhaPageState extends State<SebhaPage> {
   double angel = 1;
   String txt = 'سبحان الله';
   int oneHundred = 0;
+
   @override
   Widget build(BuildContext context) {
     return Center(
