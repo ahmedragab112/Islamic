@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       routes: {
         HomePage.routeName: (context) => const HomePage(),
         QuranDetails.routeName: (context) => const QuranDetails(),
-        AhadethDetails.routeName: (context) => AhadethDetails()
+        AhadethDetails.routeName: (context) => const AhadethDetails()
       },
       theme: MyThemData.lightThem,
       darkTheme: MyThemData.darkThem,
