@@ -23,63 +23,69 @@ class _AhadethPageState extends State<AhadethPage> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(
-        children: [
-          Image.asset(
-            'assets/images/ahadeth_image.png',
-            width: 300,
-            height: 200,
-            fit: BoxFit.fill,
+      child: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+            child: Image.asset(
+              'assets/images/ahadeth_image.png',
+              width: 300,
+              height: 200,
+              fit: BoxFit.fill,
+            ),
           ),
-          Divider(
-            thickness: 2,
-            color: MyThemData.primryColor,
+          SliverToBoxAdapter(
+            child: Divider(
+              thickness: 2,
+              color: MyThemData.primryColor,
+            ),
           ),
-          Text(
-            'الأحاديث',
-            style: Theme.of(context)
-                .textTheme
-                .bodyMedium!
-                .copyWith(color: MyThemData.blackyColor),
+          SliverToBoxAdapter(
+            child: Text(
+              'الأحاديث',
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyMedium!
+                  .copyWith(color: MyThemData.blackyColor),
+              textAlign: TextAlign.center,
+            ),
           ),
-          Divider(
-            thickness: 2,
-            color: MyThemData.primryColor,
+          SliverToBoxAdapter(
+            child: Divider(
+              thickness: 2,
+              color: MyThemData.primryColor,
+            ),
           ),
           ahadthList.isEmpty
-              ? Center(
-                  child: CircularProgressIndicator(
-                    color: MyThemData.primryColor,
-                  ),
-                )
-              : Expanded(
-                  child: ListView.separated(
-                    separatorBuilder: (context, index) => Divider(
-                      endIndent: 40,
-                      indent: 40,
-                      thickness: 2,
+              ? SliverToBoxAdapter(
+                  child: Center(
+                    child: CircularProgressIndicator(
                       color: MyThemData.primryColor,
                     ),
-                    itemBuilder: (context, index) => Center(
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.pushNamed(context, AhadethDetails.routeName,
-                              arguments: ahadthList[index]);
-                        },
-                        child: Text(
-                          '${ahadthList[index].title}',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodySmall!
-                              .copyWith(
-                                  color: MyThemData.blackyColor,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'assets/fonts/KOUFIBD.TTF'),
-                        ),
+                  ),
+                )
+              : SliverList.separated(
+                  separatorBuilder: (context, index) => Divider(
+                    endIndent: 40,
+                    indent: 40,
+                    thickness: 2,
+                    color: MyThemData.primryColor,
+                  ),
+                  itemBuilder: (context, index) => Center(
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, AhadethDetails.routeName,
+                            arguments: ahadthList[index]);
+                      },
+                      child: Text(
+                        '${ahadthList[index].title}',
+                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                            color: MyThemData.blackyColor,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'assets/fonts/KOUFIBD.TTF'),
                       ),
                     ),
-                    itemCount: ahadthList.length,
                   ),
+                  itemCount: ahadthList.length,
                 )
         ],
       ),
