@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islamic_app/model/my_them_data.dart';
+import 'package:islamic_app/pages/ahadth_details.dart';
 
 class AhadethPage extends StatelessWidget {
   const AhadethPage({super.key});
@@ -36,12 +37,18 @@ class AhadethPage extends StatelessWidget {
                 height: 20,
               ),
               itemBuilder: (context, index) => Center(
-                child: Text(
-                  '${index + 1} الحديث رقم',
-                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                      color: MyThemData.blackyColor,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'assets/fonts/KOUFIBD.TTF'),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, AhadethDetails.routeName,
+                        arguments: index);
+                  },
+                  child: Text(
+                    '${index + 1} الحديث رقم',
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                        color: MyThemData.blackyColor,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'assets/fonts/KOUFIBD.TTF'),
+                  ),
                 ),
               ),
               itemCount: 50,
