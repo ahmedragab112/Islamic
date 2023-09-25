@@ -3,7 +3,7 @@ import 'package:islamic_app/model/my_them_data.dart';
 import 'package:islamic_app/pages/ahadth_details.dart';
 
 class AhadethPage extends StatelessWidget {
-  const AhadethPage({super.key});
+ const AhadethPage({super.key});
 
   @override
   Widget build(BuildContext context) {
