@@ -46,32 +46,41 @@ class _AhadethPageState extends State<AhadethPage> {
             thickness: 2,
             color: MyThemData.primryColor,
           ),
-          Expanded(
-            child: ListView.separated(
-              separatorBuilder: (context, index) => Divider(
-                endIndent: 40,
-                indent: 40,
-                thickness: 2,
-                color: MyThemData.primryColor,
-              ),
-              itemBuilder: (context, index) => Center(
-                child: InkWell(
-                  onTap: () {
-                    Navigator.pushNamed(context, AhadethDetails.routeName,
-                        arguments: ahadthList[index]);
-                  },
-                  child: Text(
-                    '${ahadthList[index].title}',
-                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                        color: MyThemData.blackyColor,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'assets/fonts/KOUFIBD.TTF'),
+          ahadthList.isEmpty
+              ? Center(
+                  child: CircularProgressIndicator(
+                    color: MyThemData.primryColor,
                   ),
-                ),
-              ),
-              itemCount: ahadthList.length,
-            ),
-          )
+                )
+              : Expanded(
+                  child: ListView.separated(
+                    separatorBuilder: (context, index) => Divider(
+                      endIndent: 40,
+                      indent: 40,
+                      thickness: 2,
+                      color: MyThemData.primryColor,
+                    ),
+                    itemBuilder: (context, index) => Center(
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.pushNamed(context, AhadethDetails.routeName,
+                              arguments: ahadthList[index]);
+                        },
+                        child: Text(
+                          '${ahadthList[index].title}',
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodySmall!
+                              .copyWith(
+                                  color: MyThemData.blackyColor,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'assets/fonts/KOUFIBD.TTF'),
+                        ),
+                      ),
+                    ),
+                    itemCount: ahadthList.length,
+                  ),
+                )
         ],
       ),
     );
