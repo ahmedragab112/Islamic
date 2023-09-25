@@ -24,7 +24,7 @@ class MyThemData {
           fontFamily: 'assets/fonts/ElMessiri-SemiBold.ttf',
           color: whiteColor,
           fontSize: 25,
-          fontWeight: FontWeight.w400,
+          fontWeight: FontWeight.bold,
         ),
         bodyLarge: TextStyle(
           fontFamily: 'assets/fonts/ElMessiri-SemiBold.ttf',

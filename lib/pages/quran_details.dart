@@ -97,12 +97,13 @@ class _QuranDetailsState extends State<QuranDetails> {
                           ),
                           itemBuilder: (context, index) => Center(
                             child: Text(
-                              '${verses[index]}',
+                              '${verses[index]} ($index) ',
                               style: Theme.of(context)
                                   .textTheme
                                   .bodySmall!
                                   .copyWith(color: MyThemData.blackyColor),
                               textAlign: TextAlign.center,
+                              textDirection: TextDirection.rtl,
                             ),
                           ),
                           itemCount: verses.length,

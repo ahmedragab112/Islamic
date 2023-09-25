@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:islamic_app/model/my_them_data.dart';
 import 'package:islamic_app/pages/taps/ahadeth_page.dart';
 import 'package:islamic_app/pages/taps/moshaf_page.dart';
-import 'package:islamic_app/pages/taps/radio_page.dart';
 import 'package:islamic_app/pages/taps/sebha_page.dart';
 import 'package:islamic_app/pages/taps/setting_page.dart';
+
+import '../pages/taps/radio_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -24,6 +25,7 @@ class _HomePageState extends State<HomePage> {
     MoshafPage(),
     SettingPage()
   ];
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -39,12 +41,10 @@ class _HomePageState extends State<HomePage> {
               'إسلامي',
               style: Theme.of(context).textTheme.bodyLarge,
             ),
-           
           ),
           body: pageList[index],
           bottomNavigationBar: BottomNavigationBar(
             iconSize: 45,
-            
             onTap: (value) {
               index = value;
               setState(() {});
