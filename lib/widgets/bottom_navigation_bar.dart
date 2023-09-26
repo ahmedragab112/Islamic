@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islamic_app/model/my_them_data.dart';
 import 'package:islamic_app/pages/taps/ahadeth_page.dart';
 import 'package:islamic_app/pages/taps/moshaf_page.dart';
@@ -38,7 +39,7 @@ class _HomePageState extends State<HomePage> {
         Scaffold(
           appBar: AppBar(
             title: Text(
-              'إسلامي',
+              AppLocalizations.of(context)!.appTitle,
               style: Theme.of(context).textTheme.bodyLarge,
             ),
           ),
@@ -50,39 +51,39 @@ class _HomePageState extends State<HomePage> {
               setState(() {});
             },
             currentIndex: index,
-            items: const [
+            items: [
               BottomNavigationBarItem(
-                  icon: ImageIcon(
+                  icon: const ImageIcon(
                     AssetImage('assets/images/radio_icon.png'),
                   ),
-                  label: 'الراديو',
+                  label: AppLocalizations.of(context)!.radio,
                   backgroundColor: MyThemData.primryColor),
               BottomNavigationBarItem(
-                icon: ImageIcon(
+                icon: const ImageIcon(
                   AssetImage('assets/images/sebha_icon.png'),
                 ),
-                label: 'التسبيح',
+                label: AppLocalizations.of(context)!.tasbeh,
                 backgroundColor: MyThemData.primryColor,
               ),
               BottomNavigationBarItem(
-                icon: ImageIcon(
+                icon: const ImageIcon(
                   AssetImage('assets/images/ahadeth_icon.png'),
                 ),
-                label: 'الأحاديث',
+                label: AppLocalizations.of(context)!.ahadeth,
                 backgroundColor: MyThemData.primryColor,
               ),
               BottomNavigationBarItem(
-                icon: ImageIcon(
+                icon: const ImageIcon(
                   AssetImage(
                     'assets/images/moshaf_blue.png',
                   ),
                 ),
-                label: 'القرآن',
+                label: AppLocalizations.of(context)!.quran,
                 backgroundColor: MyThemData.primryColor,
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.settings),
-                label: 'الاعدادات',
+                icon: const Icon(Icons.settings),
+                label: AppLocalizations.of(context)!.setting,
                 backgroundColor: MyThemData.primryColor,
               ),
             ],

@@ -4,7 +4,7 @@ import 'package:islamic_app/model/hadith_model.dart';
 import '../model/my_them_data.dart';
 
 class AhadethDetails extends StatefulWidget {
-  const AhadethDetails({Key? key});
+  const AhadethDetails({super.key});
 
   static String routeName = 'ahadthpage';
 
@@ -31,7 +31,7 @@ class _AhadethDetailsState extends State<AhadethDetails> {
               onPressed: () {
                 Navigator.pop(context);
               },
-              icon: Icon(Icons.arrow_back_ios),
+              icon: const Icon(Icons.arrow_back_ios),
             ),
             title: Text(
               args.title,
@@ -40,9 +40,11 @@ class _AhadethDetailsState extends State<AhadethDetails> {
           ),
           body: Card(
             elevation: 10,
-            margin: EdgeInsets.only(top: 20, right: 20, left: 20, bottom: 50),
+            margin:
+                const EdgeInsets.only(top: 20, right: 20, left: 20, bottom: 50),
             shape: OutlineInputBorder(
-              borderSide: BorderSide(color: MyThemData.primryColor, width: 2),
+              borderSide:
+                  const BorderSide(color: MyThemData.primryColor, width: 2),
               borderRadius: BorderRadius.circular(25),
             ),
             child: Padding(
@@ -52,30 +54,30 @@ class _AhadethDetailsState extends State<AhadethDetails> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Spacer(
+                      const Spacer(
                         flex: 4,
                       ),
                       Text(
-                        '${args.title}',
+                        args.title,
                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                               color: MyThemData.blackyColor,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'assets/fonts/KOUFIBD.TTF',
                             ),
                       ),
-                      Spacer(
+                      const Spacer(
                         flex: 1,
                       ),
-                      Icon(
+                      const Icon(
                         Icons.play_circle_sharp,
                         size: 30,
                       ),
-                      Spacer(
+                      const Spacer(
                         flex: 4,
                       )
                     ],
                   ),
-                  Divider(
+                  const Divider(
                     color: MyThemData.primryColor,
                     thickness: 1,
                     indent: 20,
@@ -83,7 +85,7 @@ class _AhadethDetailsState extends State<AhadethDetails> {
                   ),
                   Expanded(
                     child: ListView.separated(
-                      physics: BouncingScrollPhysics(),
+                      physics: const BouncingScrollPhysics(),
                       itemCount: args.contain.length,
                       itemBuilder: (context, index) => Center(
                         child: Text(
@@ -95,7 +97,7 @@ class _AhadethDetailsState extends State<AhadethDetails> {
                           textAlign: TextAlign.center,
                         ),
                       ),
-                      separatorBuilder: (context, index) => Divider(
+                      separatorBuilder: (context, index) => const Divider(
                         color: MyThemData.primryColor,
                         thickness: 2,
                         endIndent: 40,
