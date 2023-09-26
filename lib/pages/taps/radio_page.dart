@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islamic_app/model/my_them_data.dart';
 
 class RadioPage extends StatelessWidget {
@@ -19,7 +20,7 @@ class RadioPage extends StatelessWidget {
           flex: 1,
         ),
         Text(
-          'إذاعة القرآن الكريم',
+          AppLocalizations.of(context)!.radioOfEthicsQuran,
           style: Theme.of(context)
               .textTheme
               .bodyMedium!
