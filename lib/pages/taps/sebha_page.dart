@@ -28,7 +28,7 @@ class _SebhaPageState extends State<SebhaPage> {
                 alignment: Alignment.center,
                 children: [
                   Container(
-                    padding: EdgeInsets.only(top: 60),
+                    padding: const EdgeInsets.only(top: 60),
                     child: Transform.rotate(
                       angle: angel,
                       child: Image.asset(

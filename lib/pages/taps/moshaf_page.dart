@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islamic_app/model/my_them_data.dart';
 import 'package:islamic_app/model/sura_model.dart';
 import 'package:islamic_app/pages/quran_details.dart';
@@ -19,14 +20,14 @@ class MoshafPage extends StatelessWidget {
             fit: BoxFit.fill,
           ),
         ),
-        SliverToBoxAdapter(
+        const SliverToBoxAdapter(
           child: SizedBox(
             height: 20,
           ),
         ),
         SliverToBoxAdapter(
           child: Table(
-            border: TableBorder(
+            border: const TableBorder(
               top: BorderSide(
                 color: MyThemData.primryColor,
                 width: 3,
@@ -44,15 +45,18 @@ class MoshafPage extends StatelessWidget {
             textDirection: TextDirection.rtl,
             children: [
               TableRow(children: [
-                BuildTableRow(txt: 'اسم السورة', header: true),
-                BuildTableRow(txt: 'عدد الآيات', header: true),
+                BuildTableRow(
+                    txt: AppLocalizations.of(context)!.suraNames, header: true),
+                BuildTableRow(
+                    txt: AppLocalizations.of(context)!.numberOfAyat,
+                    header: true),
               ])
             ],
           ),
         ),
         SliverToBoxAdapter(
           child: Table(
-              border: TableBorder(
+              border: const TableBorder(
                 verticalInside: BorderSide(
                   color: MyThemData.primryColor,
                   width: 3,

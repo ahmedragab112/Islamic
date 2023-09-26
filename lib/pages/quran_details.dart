@@ -33,16 +33,17 @@ class _QuranDetailsState extends State<QuranDetails> {
               onPressed: () {
                 Navigator.pop(context);
               },
-              icon: Icon(Icons.arrow_back_ios),
+              icon: const Icon(Icons.arrow_back_ios),
             ),
             title: Text(
-              '${args.name}',
+              args.name,
               style: Theme.of(context).textTheme.bodyLarge,
             ),
           ),
           body: Container(
-            margin: EdgeInsets.only(top: 20, right: 20, left: 20, bottom: 50),
-            padding: EdgeInsets.all(20),
+            margin:
+                const EdgeInsets.only(top: 20, right: 20, left: 20, bottom: 50),
+            padding: const EdgeInsets.all(20),
             width: double.infinity,
             height: double.infinity,
             decoration: BoxDecoration(
@@ -54,7 +55,7 @@ class _QuranDetailsState extends State<QuranDetails> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Spacer(
+                    const Spacer(
                       flex: 4,
                     ),
                     Text(
@@ -64,19 +65,19 @@ class _QuranDetailsState extends State<QuranDetails> {
                           fontWeight: FontWeight.bold,
                           fontFamily: 'assets/fonts/KOUFIBD.TTF'),
                     ),
-                    Spacer(
+                    const Spacer(
                       flex: 1,
                     ),
-                    Icon(
+                    const Icon(
                       Icons.play_circle_sharp,
                       size: 30,
                     ),
-                    Spacer(
+                    const Spacer(
                       flex: 4,
                     )
                   ],
                 ),
-                Divider(
+                const Divider(
                   color: MyThemData.primryColor,
                   thickness: 1,
                   indent: 20,
@@ -84,13 +85,13 @@ class _QuranDetailsState extends State<QuranDetails> {
                 ),
                 Expanded(
                   child: verses.isEmpty
-                      ? Center(
+                      ? const Center(
                           child: CircularProgressIndicator(
                             color: MyThemData.primryColor,
                           ),
                         )
                       : ListView.separated(
-                          separatorBuilder: (context, index) => Divider(
+                          separatorBuilder: (context, index) => const Divider(
                             color: MyThemData.primryColor,
                             indent: 30,
                             endIndent: 30,
@@ -118,7 +119,7 @@ class _QuranDetailsState extends State<QuranDetails> {
   }
 
   void getFileData(int index) async {
-    String file = await rootBundle.loadString('assets/files/${index}.txt');
+    String file = await rootBundle.loadString('assets/files/$index.txt');
     List<String> lines = file.split('\n');
     verses = lines;
     setState(() {});

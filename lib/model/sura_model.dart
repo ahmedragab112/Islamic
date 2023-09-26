@@ -123,7 +123,7 @@ const List<int> numberOfAyatInSurah = [
   26,
 ];
 
-const List<String> ArSuras = [
+const List<String> arSuras = [
   "الفاتحه",
   "البقرة",
   "آل عمران",
@@ -239,9 +239,9 @@ const List<String> ArSuras = [
   "الفلق",
   "الناس"
 ];
-List<int> numbers = List.generate(114, (index) => index+1 );
+List<int> numbers = List.generate(114, (index) => index + 1);
 
 List<SurahData> combinedList = List.generate(
     numberOfAyatInSurah.length,
     (index) =>
-        SurahData(numberOfAyatInSurah[index], ArSuras[index], numbers[index]));
+        SurahData(numberOfAyatInSurah[index], arSuras[index], numbers[index]));
