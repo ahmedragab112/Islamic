@@ -15,8 +15,8 @@ class MoshafPage extends StatelessWidget {
         SliverToBoxAdapter(
           child: Image.asset(
             'assets/images/quran_image.png',
-            width: 205,
-            height: 227,
+            height: 220,
+            width: 100,
             fit: BoxFit.fill,
           ),
         ),

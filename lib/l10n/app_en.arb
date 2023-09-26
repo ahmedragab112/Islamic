@@ -6,5 +6,10 @@
   "tasbeh": "Tasbeh",
   "setting": "Setting",
   "radio": "Radio",
-  "quran": "Quran"
+  "quran": "Quran",
+  "language": "Language",
+  "theme": "Theme",
+  "english": "English",
+  "numberOfTasbeh": "Number Of Tasbeh",
+  "radioOfEthicsQuran": "Radio Of Ethics Quran"
 }

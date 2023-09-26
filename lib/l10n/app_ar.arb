@@ -6,5 +6,10 @@
   "tasbeh": "التسبيح",
   "setting": "الاعدادات",
   "radio": "الراديو",
-  "quran": "القران"
+  "quran": "القران",
+  "language": "اللغه",
+  "theme": "نسق",
+  "english": "اللغه العربيه",
+  "numberOfTasbeh": "عدد التسابيح",
+  "radioOfEthicsQuran": "إذاعة القرآن الكريم"
 }

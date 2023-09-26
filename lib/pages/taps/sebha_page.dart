@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islamic_app/model/my_them_data.dart';
 
 class SebhaPage extends StatefulWidget {
@@ -62,7 +63,7 @@ class _SebhaPageState extends State<SebhaPage> {
             flex: 1,
           ),
           Text(
-            'عدد التسبيحات',
+            AppLocalizations.of(context)!.numberOfTasbeh,
             style: Theme.of(context)
                 .textTheme
                 .bodyMedium!
