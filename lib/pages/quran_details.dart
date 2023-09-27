@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:islamic_app/model/my_them_data.dart';
 import 'package:islamic_app/model/sura_model.dart';
+import 'package:islamic_app/providers/languae_provider.dart';
+import 'package:provider/provider.dart';
 
 class QuranDetails extends StatefulWidget {
   const QuranDetails({super.key});
+
   static const String routeName = 'quranDetails';
 
   @override
@@ -16,14 +18,16 @@ class _QuranDetailsState extends State<QuranDetails> {
 
   @override
   Widget build(BuildContext context) {
+    LanguageProvider provider = Provider.of<LanguageProvider>(context);
     SurahData args = ModalRoute.of(context)!.settings.arguments as SurahData;
+
     if (verses.isEmpty) {
       getFileData(args.numberOfSura);
     }
     return Stack(
       children: [
         Image.asset(
-          'assets/images/background.png',
+          provider.getBackGround(),
           width: double.infinity,
           fit: BoxFit.fill,
         ),
@@ -47,9 +51,11 @@ class _QuranDetailsState extends State<QuranDetails> {
             width: double.infinity,
             height: double.infinity,
             decoration: BoxDecoration(
-                border: Border.all(color: MyThemData.primryColor, width: 2),
-                color: MyThemData.whiteColor,
-                borderRadius: BorderRadius.circular(25)),
+              border: Border.all(
+                  color: Theme.of(context).colorScheme.surface, width: 2),
+              color: Theme.of(context).colorScheme.background,
+              borderRadius: BorderRadius.circular(25),
+            ),
             child: Column(
               children: [
                 Row(
@@ -61,54 +67,58 @@ class _QuranDetailsState extends State<QuranDetails> {
                     Text(
                       'سورة ${args.name}',
                       style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: MyThemData.blackyColor,
+                          color: Theme.of(context).colorScheme.secondary,
                           fontWeight: FontWeight.bold,
                           fontFamily: 'assets/fonts/KOUFIBD.TTF'),
                     ),
                     const Spacer(
                       flex: 1,
                     ),
-                    const Icon(
+                    Icon(
                       Icons.play_circle_sharp,
                       size: 30,
+                      color: Theme.of(context).colorScheme.secondary,
                     ),
                     const Spacer(
                       flex: 4,
                     )
                   ],
                 ),
-                const Divider(
-                  color: MyThemData.primryColor,
+                Divider(
+                  color: Theme.of(context).colorScheme.surface,
                   thickness: 1,
                   indent: 20,
                   endIndent: 20,
                 ),
                 Expanded(
                   child: verses.isEmpty
-                      ? const Center(
+                      ? Center(
                           child: CircularProgressIndicator(
-                            color: MyThemData.primryColor,
+                            color: Theme.of(context).colorScheme.surface,
                           ),
                         )
                       : ListView.separated(
-                          separatorBuilder: (context, index) => const Divider(
-                            color: MyThemData.primryColor,
+                          separatorBuilder: (context, index) => Divider(
+                            color: Theme.of(context).colorScheme.surface,
                             indent: 30,
                             endIndent: 30,
                           ),
                           itemBuilder: (context, index) => Center(
                             child: Text(
-                              '${verses[index]} ($index) ',
+                              '${verses[index]} ($index)',
                               style: Theme.of(context)
                                   .textTheme
                                   .bodySmall!
-                                  .copyWith(color: MyThemData.blackyColor),
+                                  .copyWith(
+                                    color:
+                                        Theme.of(context).colorScheme.secondary,
+                                  ),
                               textAlign: TextAlign.center,
                               textDirection: TextDirection.rtl,
                             ),
-                          ),
-                          itemCount: verses.length,
                         ),
+                    itemCount: verses.length,
+                  ),
                 )
               ],
             ),

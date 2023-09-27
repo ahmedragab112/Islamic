@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:islamic_app/model/my_them_data.dart';
 import 'package:islamic_app/model/sura_model.dart';
 import 'package:islamic_app/pages/quran_details.dart';
 import 'package:islamic_app/widgets/build_table_row.dart';
+import 'package:provider/provider.dart';
+
+import '../../providers/languae_provider.dart';
 
 class MoshafPage extends StatelessWidget {
   const MoshafPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    LanguageProvider provider = Provider.of<LanguageProvider>(context);
     return CustomScrollView(
       slivers: [
         SliverToBoxAdapter(
           child: Image.asset(
             'assets/images/quran_image.png',
             height: 220,
-            width: 100,
-            fit: BoxFit.fill,
+            width: 205,
           ),
         ),
         const SliverToBoxAdapter(
@@ -27,17 +29,17 @@ class MoshafPage extends StatelessWidget {
         ),
         SliverToBoxAdapter(
           child: Table(
-            border: const TableBorder(
+            border: TableBorder(
               top: BorderSide(
-                color: MyThemData.primryColor,
+                color: Theme.of(context).colorScheme.surface,
                 width: 3,
               ),
               bottom: BorderSide(
-                color: MyThemData.primryColor,
+                color: Theme.of(context).colorScheme.surface,
                 width: 3,
               ),
               verticalInside: BorderSide(
-                color: MyThemData.primryColor,
+                color: Theme.of(context).colorScheme.surface,
                 width: 3,
               ),
             ),
@@ -56,9 +58,9 @@ class MoshafPage extends StatelessWidget {
         ),
         SliverToBoxAdapter(
           child: Table(
-              border: const TableBorder(
+              border: TableBorder(
                 verticalInside: BorderSide(
-                  color: MyThemData.primryColor,
+                  color: Theme.of(context).colorScheme.surface,
                   width: 3,
                 ),
               ),
@@ -67,25 +69,25 @@ class MoshafPage extends StatelessWidget {
               children: combinedList
                   .map(
                     (e) => TableRow(
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            Navigator.pushNamed(
-                              context,
-                              QuranDetails.routeName,
-                              arguments: SurahData(
-                                e.numberOfAyat,
-                                e.name,
-                                e.numberOfSura,
-                              ),
-                            );
-                          },
-                          child: BuildTableRow(txt: e.name),
-                        ),
-                        BuildTableRow(txt: e.numberOfAyat.toString())
-                      ],
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(
+                          context,
+                          QuranDetails.routeName,
+                          arguments: SurahData(
+                            e.numberOfAyat,
+                            e.name,
+                            e.numberOfSura,
+                          ),
+                        );
+                      },
+                      child: BuildTableRow(txt: e.name),
                     ),
-                  )
+                    BuildTableRow(txt: e.numberOfAyat.toString())
+                  ],
+                ),
+              )
                   .toList()),
         ),
       ],

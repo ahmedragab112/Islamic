@@ -1,27 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:islamic_app/model/hadith_model.dart';
+import 'package:islamic_app/providers/languae_provider.dart';
+import 'package:provider/provider.dart';
 
 import '../model/my_them_data.dart';
 
-class AhadethDetails extends StatefulWidget {
+class AhadethDetails extends StatelessWidget {
   const AhadethDetails({super.key});
 
   static String routeName = 'ahadthpage';
 
   @override
-  State<AhadethDetails> createState() => _AhadethDetailsState();
-}
-
-class _AhadethDetailsState extends State<AhadethDetails> {
-  @override
   Widget build(BuildContext context) {
+    LanguageProvider provider = Provider.of<LanguageProvider>(context);
     HadaithModel args =
         ModalRoute.of(context)!.settings.arguments as HadaithModel;
 
     return Stack(
       children: [
         Image.asset(
-          'assets/images/background.png',
+          provider.getBackGround(),
           width: double.infinity,
           fit: BoxFit.fill,
         ),
@@ -39,6 +37,7 @@ class _AhadethDetailsState extends State<AhadethDetails> {
             ),
           ),
           body: Card(
+            color: Theme.of(context).colorScheme.onPrimary,
             elevation: 10,
             margin:
                 const EdgeInsets.only(top: 20, right: 20, left: 20, bottom: 50),
@@ -60,7 +59,7 @@ class _AhadethDetailsState extends State<AhadethDetails> {
                       Text(
                         args.title,
                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                              color: MyThemData.blackyColor,
+                          color: Theme.of(context).colorScheme.secondary,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'assets/fonts/KOUFIBD.TTF',
                             ),
@@ -68,17 +67,18 @@ class _AhadethDetailsState extends State<AhadethDetails> {
                       const Spacer(
                         flex: 1,
                       ),
-                      const Icon(
+                      Icon(
                         Icons.play_circle_sharp,
                         size: 30,
+                        color: Theme.of(context).colorScheme.secondary,
                       ),
                       const Spacer(
                         flex: 4,
                       )
                     ],
                   ),
-                  const Divider(
-                    color: MyThemData.primryColor,
+                  Divider(
+                    color: Theme.of(context).colorScheme.surface,
                     thickness: 1,
                     indent: 20,
                     endIndent: 20,
@@ -93,10 +93,12 @@ class _AhadethDetailsState extends State<AhadethDetails> {
                           style: Theme.of(context)
                               .textTheme
                               .bodyLarge!
-                              .copyWith(color: MyThemData.blackyColor),
+                              .copyWith(
+                                color: Theme.of(context).colorScheme.secondary,
+                              ),
                           textAlign: TextAlign.center,
                         ),
-                      ),
+                          ),
                       separatorBuilder: (context, index) => const Divider(
                         color: MyThemData.primryColor,
                         thickness: 2,
