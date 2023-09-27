@@ -2,7 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:islamic_app/model/my_them_data.dart';
+import 'package:islamic_app/providers/languae_provider.dart';
+import 'package:provider/provider.dart';
 
 class SebhaPage extends StatefulWidget {
   const SebhaPage({super.key});
@@ -19,6 +20,7 @@ class _SebhaPageState extends State<SebhaPage> {
 
   @override
   Widget build(BuildContext context) {
+    LanguageProvider provider = Provider.of<LanguageProvider>(context);
     return Center(
       child: Column(
         children: [
@@ -30,33 +32,44 @@ class _SebhaPageState extends State<SebhaPage> {
                 children: [
                   Container(
                     padding: const EdgeInsets.only(top: 60),
+                    margin: const EdgeInsets.only(top: 20),
                     child: Transform.rotate(
                       angle: angel,
-                      child: Image.asset(
-                        'assets/images/body_of_seb7a.png',
-                        fit: BoxFit.fill,
-                        height: 250,
-                      ),
+                      child: provider.mode == ThemeMode.light
+                          ? Image.asset(
+                              'assets/images/body_of_seb7a.png',
+                              fit: BoxFit.fill,
+                              height: 200,
+                            )
+                          : Image.asset(
+                              'assets/images/dark_body_of_seb7a.png',
+                              fit: BoxFit.fill,
+                              height: 250,
+                            ),
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 50.0),
+                    padding: const EdgeInsets.only(top: 60.0),
                     child: Text(
                       '$oneHundred',
                       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                            color: MyThemData.primryColor,
-                            fontSize: 120,
+                            color: Theme.of(context).colorScheme.error,
+                            fontSize: 100,
                           ),
                     ),
                   )
                 ],
               ),
-              Image.asset(
-                'assets/images/head_of_seb7a.png',
-                height: 88,
-                width: 100,
-                fit: BoxFit.fill,
-              ),
+              provider.mode == ThemeMode.light
+                  ? Padding(
+                      padding: const EdgeInsets.only(left: 40, bottom: 16),
+                      child: Image.asset('assets/images/head_of_seb7a.png'),
+                    )
+                  : Padding(
+                      padding: const EdgeInsets.only(left: 40, bottom: 16),
+                      child:
+                          Image.asset('assets/images/dark_head_of_seb7a.png'),
+                    )
             ],
           ),
           const Spacer(
@@ -67,7 +80,7 @@ class _SebhaPageState extends State<SebhaPage> {
             style: Theme.of(context)
                 .textTheme
                 .bodyMedium!
-                .copyWith(color: MyThemData.blackyColor),
+                .copyWith(color: Theme.of(context).colorScheme.onSecondary),
           ),
           const Spacer(
             flex: 1,
@@ -75,8 +88,9 @@ class _SebhaPageState extends State<SebhaPage> {
           Container(
             padding: const EdgeInsets.all(15),
             decoration: BoxDecoration(
-                color: MyThemData.primryColor,
-                borderRadius: BorderRadius.circular(30)),
+              color: Theme.of(context).colorScheme.primary,
+              borderRadius: BorderRadius.circular(30),
+            ),
             child: Text(
               '$counter',
               textAlign: TextAlign.center,
@@ -89,7 +103,7 @@ class _SebhaPageState extends State<SebhaPage> {
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: MyThemData.primryColor,
+              color: Theme.of(context).colorScheme.error,
             ),
             child: InkWell(
               onTap: () {
@@ -111,7 +125,10 @@ class _SebhaPageState extends State<SebhaPage> {
               },
               child: Text(
                 txt,
-                style: Theme.of(context).textTheme.bodyMedium,
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyMedium!
+                    .copyWith(color: Theme.of(context).colorScheme.onPrimary),
                 textAlign: TextAlign.center,
               ),
             ),

@@ -12,13 +12,16 @@ class LanguageBottomSheet extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-          border: Border.all(
-            color: MyThemData.primryColor,
-            width: 5,
-          ),
-          borderRadius: BorderRadius.circular(20)),
-      height: MediaQuery.of(context).size.height * .3,
+        color: Theme.of(context).colorScheme.onSecondary,
+        border: Border.all(
+          color: MyThemData.primryColor,
+          width: 2,
+        ),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      height: MediaQuery.of(context).size.height * .2,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           InkWell(
             onTap: () {
@@ -32,14 +35,14 @@ class LanguageBottomSheet extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                       color: provider.languageCode == 'en'
                           ? MyThemData.primryColor
-                          : Colors.black54),
+                          : MyThemData.yellow),
                 ),
                 provider.languageCode == 'en'
                     ? const Icon(
-                        Icons.check,
-                        color: MyThemData.primryColor,
-                        size: 35,
-                      )
+                  Icons.check,
+                  color: MyThemData.primryColor,
+                  size: 35,
+                )
                     : const SizedBox.shrink(),
               ],
             ),
@@ -55,16 +58,16 @@ class LanguageBottomSheet extends StatelessWidget {
                   'العربية',
                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                       color: provider.languageCode == 'en'
-                          ? Colors.black54
+                          ? MyThemData.yellow
                           : MyThemData.primryColor),
                 ),
                 provider.languageCode == 'en'
                     ? const SizedBox.shrink()
                     : const Icon(
-                        Icons.check,
-                        size: 35,
-                        color: MyThemData.primryColor,
-                      ),
+                  Icons.check,
+                  size: 35,
+                  color: MyThemData.primryColor,
+                ),
               ],
             ),
           )

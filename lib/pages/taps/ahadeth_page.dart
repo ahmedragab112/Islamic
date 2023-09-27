@@ -31,13 +31,12 @@ class _AhadethPageState extends State<AhadethPage> {
               'assets/images/ahadeth_image.png',
               width: 300,
               height: 200,
-              fit: BoxFit.fill,
             ),
           ),
-          const SliverToBoxAdapter(
+          SliverToBoxAdapter(
             child: Divider(
               thickness: 2,
-              color: MyThemData.primryColor,
+              color: Theme.of(context).colorScheme.error,
             ),
           ),
           SliverToBoxAdapter(
@@ -46,14 +45,14 @@ class _AhadethPageState extends State<AhadethPage> {
               style: Theme.of(context)
                   .textTheme
                   .bodyMedium!
-                  .copyWith(color: MyThemData.blackyColor),
+                  .copyWith(color: Theme.of(context).colorScheme.onSecondary),
               textAlign: TextAlign.center,
             ),
           ),
-          const SliverToBoxAdapter(
+          SliverToBoxAdapter(
             child: Divider(
               thickness: 2,
-              color: MyThemData.primryColor,
+              color: Theme.of(context).colorScheme.error,
             ),
           ),
           ahadthList.isEmpty
@@ -65,11 +64,11 @@ class _AhadethPageState extends State<AhadethPage> {
                   ),
                 )
               : SliverList.separated(
-                  separatorBuilder: (context, index) => const Divider(
+            separatorBuilder: (context, index) => Divider(
                     endIndent: 40,
                     indent: 40,
                     thickness: 2,
-                    color: MyThemData.primryColor,
+                    color: Theme.of(context).colorScheme.error,
                   ),
                   itemBuilder: (context, index) => Center(
                     child: InkWell(
@@ -80,7 +79,7 @@ class _AhadethPageState extends State<AhadethPage> {
                       child: Text(
                         ahadthList[index].title,
                         style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                            color: MyThemData.blackyColor,
+                            color: Theme.of(context).colorScheme.onSecondary,
                             fontWeight: FontWeight.bold,
                             fontFamily: 'assets/fonts/KOUFIBD.TTF'),
                       ),
@@ -104,7 +103,6 @@ class _AhadethPageState extends State<AhadethPage> {
         ahadthList.add(HadaithModel(contain: lines, title: title));
         setState(() {});
       }
-    }).catchError((e) {
-    });
+    }).catchError((e) {});
   }
 }

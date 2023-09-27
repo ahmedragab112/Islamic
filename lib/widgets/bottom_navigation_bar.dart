@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:islamic_app/model/my_them_data.dart';
 import 'package:islamic_app/pages/taps/ahadeth_page.dart';
 import 'package:islamic_app/pages/taps/moshaf_page.dart';
 import 'package:islamic_app/pages/taps/sebha_page.dart';
 import 'package:islamic_app/pages/taps/setting_page.dart';
+import 'package:islamic_app/providers/languae_provider.dart';
+import 'package:provider/provider.dart';
 
 import '../pages/taps/radio_page.dart';
 
@@ -29,10 +30,11 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    LanguageProvider provider = Provider.of<LanguageProvider>(context);
     return Stack(
       children: [
         Image.asset(
-          'assets/images/background.png',
+          provider.getBackGround(),
           width: double.infinity,
           fit: BoxFit.fill,
         ),
@@ -57,20 +59,20 @@ class _HomePageState extends State<HomePage> {
                     AssetImage('assets/images/radio_icon.png'),
                   ),
                   label: AppLocalizations.of(context)!.radio,
-                  backgroundColor: MyThemData.primryColor),
+                  backgroundColor: Theme.of(context).colorScheme.primary),
               BottomNavigationBarItem(
                 icon: const ImageIcon(
                   AssetImage('assets/images/sebha_icon.png'),
                 ),
                 label: AppLocalizations.of(context)!.tasbeh,
-                backgroundColor: MyThemData.primryColor,
+                backgroundColor: Theme.of(context).colorScheme.primary,
               ),
               BottomNavigationBarItem(
                 icon: const ImageIcon(
                   AssetImage('assets/images/ahadeth_icon.png'),
                 ),
                 label: AppLocalizations.of(context)!.ahadeth,
-                backgroundColor: MyThemData.primryColor,
+                backgroundColor: Theme.of(context).colorScheme.primary,
               ),
               BottomNavigationBarItem(
                 icon: const ImageIcon(
@@ -79,12 +81,12 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 label: AppLocalizations.of(context)!.quran,
-                backgroundColor: MyThemData.primryColor,
+                backgroundColor: Theme.of(context).colorScheme.primary,
               ),
               BottomNavigationBarItem(
                 icon: const Icon(Icons.settings),
                 label: AppLocalizations.of(context)!.setting,
-                backgroundColor: MyThemData.primryColor,
+                backgroundColor: Theme.of(context).colorScheme.primary,
               ),
             ],
           ),

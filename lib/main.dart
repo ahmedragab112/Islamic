@@ -9,8 +9,15 @@ import 'package:provider/provider.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => LanguageProvider(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => LanguageProvider(),
+        ),
+        // ChangeNotifierProvider(
+        //   create: (context) => SuraDetailsProvider(),
+        // ),
+      ],
       child: const MyApp(),
     ),
   );
@@ -22,6 +29,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     LanguageProvider provider = Provider.of<LanguageProvider>(context);
+
     return MaterialApp(
       locale: Locale(provider.languageCode),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -33,6 +41,7 @@ class MyApp extends StatelessWidget {
         QuranDetails.routeName: (context) => const QuranDetails(),
         AhadethDetails.routeName: (context) => const AhadethDetails()
       },
+      themeMode: provider.mode,
       theme: MyThemData.lightThem,
       darkTheme: MyThemData.darkThem,
     );

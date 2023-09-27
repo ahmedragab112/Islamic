@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:islamic_app/model/my_them_data.dart';
+import 'package:provider/provider.dart';
+
+import '../../providers/languae_provider.dart';
 
 class RadioPage extends StatelessWidget {
   const RadioPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    LanguageProvider provider = Provider.of<LanguageProvider>(context);
     return Column(
       children: [
         const Spacer(
@@ -24,36 +27,36 @@ class RadioPage extends StatelessWidget {
           style: Theme.of(context)
               .textTheme
               .bodyMedium!
-              .copyWith(color: MyThemData.blackyColor),
+              .copyWith(color: Theme.of(context).colorScheme.onError),
         ),
         const Spacer(
           flex: 1,
         ),
-        const Row(
+        Row(
           children: [
-            Spacer(),
+            const Spacer(),
             Icon(
               Icons.skip_previous_sharp,
               size: 35,
-              color: MyThemData.primryColor,
+              color: Theme.of(context).colorScheme.error,
             ),
-            Spacer(
+            const Spacer(
               flex: 1,
             ),
             Icon(
               Icons.play_arrow,
               size: 40,
-              color: MyThemData.primryColor,
+              color: Theme.of(context).colorScheme.error,
             ),
-            Spacer(
+            const Spacer(
               flex: 1,
             ),
             Icon(
               Icons.skip_next_rounded,
               size: 40,
-              color: MyThemData.primryColor,
+              color: Theme.of(context).colorScheme.error,
             ),
-            Spacer()
+            const Spacer()
           ],
         ),
         const Spacer(

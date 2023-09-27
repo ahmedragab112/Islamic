@@ -1,12 +1,83 @@
 import 'package:flutter/material.dart';
+import 'package:islamic_app/providers/languae_provider.dart';
+import 'package:provider/provider.dart';
+
+import '../../model/my_them_data.dart';
 
 class ThemeingBottomSheet extends StatelessWidget {
   const ThemeingBottomSheet({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    LanguageProvider provider = Provider.of<LanguageProvider>(context);
     return Container(
-      height: MediaQuery.of(context).size.height * .3,
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.onSecondary,
+        border: Border.all(
+          color: MyThemData.whiteColor,
+          width: 2,
+        ),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      height: MediaQuery.of(context).size.height * .2,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          InkWell(
+            onTap: () {
+              provider.changeThemMode(ThemeMode.light);
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Light',
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      color: provider.mode == ThemeMode.light
+                          ? MyThemData.primryColor
+                          : MyThemData.yellow),
+                ),
+                provider.mode == ThemeMode.light
+                    ? Icon(
+                        Icons.check,
+                        color: provider.mode == ThemeMode.light
+                            ? MyThemData.yellow
+                            : MyThemData.primryColor,
+                        size: 35,
+                      )
+                    : const SizedBox.shrink(),
+              ],
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              provider.changeThemMode(ThemeMode.dark);
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Dark',
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      color: provider.mode == ThemeMode.dark
+                          ? MyThemData.yellow
+                          : MyThemData.primryColor),
+                ),
+                provider.mode == ThemeMode.dark
+                    ? const SizedBox.shrink()
+                    : Icon(
+                        Icons.check,
+                        size: 35,
+                        color: provider.mode == ThemeMode.dark
+                            ? MyThemData.primryColor
+                            : MyThemData.yellow,
+                      ),
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }

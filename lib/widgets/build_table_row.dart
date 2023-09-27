@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:islamic_app/model/my_them_data.dart';
 
 class BuildTableRow extends StatelessWidget {
   const BuildTableRow({super.key, required this.txt, this.header=false});
@@ -14,7 +13,8 @@ class BuildTableRow extends StatelessWidget {
               child: Text(
                 txt,
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                    color: MyThemData.blackyColor, fontWeight: FontWeight.w600),
+                    color: Theme.of(context).colorScheme.onSecondary,
+                    fontWeight: FontWeight.w600),
               ),
             ),
           )
@@ -24,7 +24,7 @@ class BuildTableRow extends StatelessWidget {
               child: Text(
                 txt,
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                    color: MyThemData.blackyColor,
+                    color: Theme.of(context).colorScheme.onSecondary,
                     fontFamily: 'assets/fonts/KOUFIBD.TTF'),
               ),
             ),

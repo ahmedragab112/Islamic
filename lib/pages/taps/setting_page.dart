@@ -22,7 +22,10 @@ class _SettingPageState extends State<SettingPage> {
         children: [
           Text(
             AppLocalizations.of(context)!.language,
-            style: Theme.of(context).textTheme.bodyLarge,
+            style: Theme.of(context)
+                .textTheme
+                .bodyLarge!
+                .copyWith(color: Theme.of(context).colorScheme.secondary),
             textAlign: TextAlign.start,
           ),
           InkWell(
@@ -39,10 +42,9 @@ class _SettingPageState extends State<SettingPage> {
               ),
               child: Text(
                 AppLocalizations.of(context)!.english,
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyMedium!
-                    .copyWith(color: Colors.black),
+                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      color: Theme.of(context).colorScheme.secondary,
+                    ),
               ),
             ),
           ),
@@ -51,7 +53,10 @@ class _SettingPageState extends State<SettingPage> {
           ),
           Text(
             AppLocalizations.of(context)!.theme,
-            style: Theme.of(context).textTheme.bodyLarge,
+            style: Theme.of(context)
+                .textTheme
+                .bodyLarge!
+                .copyWith(color: Theme.of(context).colorScheme.secondary),
             textAlign: TextAlign.start,
           ),
           InkWell(
@@ -67,11 +72,11 @@ class _SettingPageState extends State<SettingPage> {
                 border: Border.all(color: MyThemData.primryColor),
               ),
               child: Text(
-                "Light Theme",
+                "Light",
                 style: Theme.of(context)
                     .textTheme
                     .bodyMedium!
-                    .copyWith(color: Colors.black),
+                    .copyWith(color: Theme.of(context).colorScheme.secondary),
               ),
             ),
           ),
@@ -87,6 +92,6 @@ class _SettingPageState extends State<SettingPage> {
 
   void showThemeingBttomSheet() {
     showModalBottomSheet(
-        context: context, builder: (context) => const ThemeingBottomSheet());
+        context: context, builder: (context) => ThemeingBottomSheet());
   }
 }
