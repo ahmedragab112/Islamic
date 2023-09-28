@@ -1,32 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:islamic_app/pages/taps/ahadeth_page.dart';
-import 'package:islamic_app/pages/taps/moshaf_page.dart';
-import 'package:islamic_app/pages/taps/sebha_page.dart';
-import 'package:islamic_app/pages/taps/setting_page.dart';
 import 'package:islamic_app/providers/languae_provider.dart';
 import 'package:provider/provider.dart';
 
-import '../pages/taps/radio_page.dart';
-
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   static const String routeName = 'homePage';
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  int index = 0;
-  List<Widget> pageList = const [
-    RadioPage(),
-    SebhaPage(),
-    AhadethPage(),
-    MoshafPage(),
-    SettingPage()
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -45,14 +25,11 @@ class _HomePageState extends State<HomePage> {
               style: Theme.of(context).textTheme.bodyLarge,
             ),
           ),
-          body: pageList[index],
+          body: provider.pageList[provider.indexOfScreen],
           bottomNavigationBar: BottomNavigationBar(
             iconSize: 45,
-            onTap: (value) {
-              index = value;
-              setState(() {});
-            },
-            currentIndex: index,
+            onTap: (value) => provider.onChangedTap(value),
+            currentIndex: provider.indexOfScreen,
             items: [
               BottomNavigationBarItem(
                   icon: const ImageIcon(
