@@ -26,7 +26,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     LanguageProvider provider = Provider.of<LanguageProvider>(context);
-
     return MaterialApp(
       locale: Locale(provider.languageCode),
       localizationsDelegates: AppLocalizations.localizationsDelegates,

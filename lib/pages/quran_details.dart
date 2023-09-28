@@ -17,7 +17,6 @@ class QuranDetails extends StatelessWidget {
       builder: (context, child) {
         SuraDetailsProvider suraDetailsProvider =
             Provider.of<SuraDetailsProvider>(context);
-
         return Stack(
           children: [
             Image.asset(

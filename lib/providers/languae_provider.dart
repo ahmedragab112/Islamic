@@ -3,6 +3,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../model/hadith_model.dart';
+import '../pages/taps/ahadeth_page.dart';
+import '../pages/taps/moshaf_page.dart';
+import '../pages/taps/radio_page.dart';
+import '../pages/taps/sebha_page.dart';
+import '../pages/taps/setting_page.dart';
 import '../widgets/bottom_sheets/language_bottom_sheet.dart';
 import '../widgets/bottom_sheets/themeing_bottom_sheet.dart';
 
@@ -14,6 +19,19 @@ class LanguageProvider extends ChangeNotifier {
   String txt = 'سبحان الله';
   int oneHundred = 0;
   List<HadaithModel> ahadthList = [];
+  int indexOfScreen = 0;
+  List<Widget> pageList = const [
+    RadioPage(),
+    SebhaPage(),
+    AhadethPage(),
+    MoshafPage(),
+    SettingPage()
+  ];
+
+  void onChangedTap(int index) {
+    indexOfScreen = index;
+    notifyListeners();
+  }
 
   void loadFile() {
     if (ahadthList.isEmpty) {
