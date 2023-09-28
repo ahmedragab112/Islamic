@@ -1,20 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islamic_app/model/my_them_data.dart';
-import 'package:islamic_app/widgets/bottom_sheets/themeing_bottom_sheet.dart';
+import 'package:islamic_app/providers/languae_provider.dart';
+import 'package:provider/provider.dart';
 
-import '../../widgets/bottom_sheets/language_bottom_sheet.dart';
-
-class SettingPage extends StatefulWidget {
+class SettingPage extends StatelessWidget {
   const SettingPage({super.key});
 
   @override
-  State<SettingPage> createState() => _SettingPageState();
-}
-
-class _SettingPageState extends State<SettingPage> {
-  @override
   Widget build(BuildContext context) {
+    LanguageProvider provider = Provider.of<LanguageProvider>(context);
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: Column(
@@ -30,7 +25,7 @@ class _SettingPageState extends State<SettingPage> {
           ),
           InkWell(
             onTap: () {
-              showLanguageBottomSheet();
+              provider.showLanguageBottomSheet(context);
             },
             child: Container(
               margin: const EdgeInsets.only(left: 20),
@@ -43,8 +38,8 @@ class _SettingPageState extends State<SettingPage> {
               child: Text(
                 AppLocalizations.of(context)!.english,
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                      color: Theme.of(context).colorScheme.secondary,
-                    ),
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
               ),
             ),
           ),
@@ -61,7 +56,7 @@ class _SettingPageState extends State<SettingPage> {
           ),
           InkWell(
             onTap: () {
-              showThemeingBttomSheet();
+              provider.showThemeingBttomSheet(context);
             },
             child: Container(
               margin: const EdgeInsets.only(left: 20),
@@ -72,7 +67,7 @@ class _SettingPageState extends State<SettingPage> {
                 border: Border.all(color: MyThemData.primryColor),
               ),
               child: Text(
-                "Light",
+                provider.getTheme(context),
                 style: Theme.of(context)
                     .textTheme
                     .bodyMedium!
@@ -83,15 +78,5 @@ class _SettingPageState extends State<SettingPage> {
         ],
       ),
     );
-  }
-
-  void showLanguageBottomSheet() {
-    showModalBottomSheet(
-        context: context, builder: (context) => const LanguageBottomSheet());
-  }
-
-  void showThemeingBttomSheet() {
-    showModalBottomSheet(
-        context: context, builder: (context) => ThemeingBottomSheet());
   }
 }

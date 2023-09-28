@@ -59,7 +59,7 @@ class AhadethDetails extends StatelessWidget {
                       Text(
                         args.title,
                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: Theme.of(context).colorScheme.secondary,
+                              color: Theme.of(context).colorScheme.secondary,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'assets/fonts/KOUFIBD.TTF',
                             ),
@@ -84,7 +84,7 @@ class AhadethDetails extends StatelessWidget {
                     endIndent: 20,
                   ),
                   Expanded(
-                    child: ListView.separated(
+                    child: ListView.builder(
                       physics: const BouncingScrollPhysics(),
                       itemCount: args.contain.length,
                       itemBuilder: (context, index) => Center(
@@ -98,12 +98,6 @@ class AhadethDetails extends StatelessWidget {
                               ),
                           textAlign: TextAlign.center,
                         ),
-                          ),
-                      separatorBuilder: (context, index) => const Divider(
-                        color: MyThemData.primryColor,
-                        thickness: 2,
-                        endIndent: 40,
-                        indent: 40,
                       ),
                     ),
                   ),

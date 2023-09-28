@@ -13,9 +13,9 @@ class ThemeingBottomSheet extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.onSecondary,
+        color: Theme.of(context).colorScheme.secondary,
         border: Border.all(
-          color: MyThemData.whiteColor,
+          color: Theme.of(context).colorScheme.onSecondary,
           width: 2,
         ),
         borderRadius: BorderRadius.circular(20),

@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:provider/provider.dart';
-
-import '../../providers/languae_provider.dart';
-
 class RadioPage extends StatelessWidget {
   const RadioPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    LanguageProvider provider = Provider.of<LanguageProvider>(context);
     return Column(
       children: [
         const Spacer(

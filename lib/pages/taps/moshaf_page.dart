@@ -3,16 +3,12 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islamic_app/model/sura_model.dart';
 import 'package:islamic_app/pages/quran_details.dart';
 import 'package:islamic_app/widgets/build_table_row.dart';
-import 'package:provider/provider.dart';
-
-import '../../providers/languae_provider.dart';
 
 class MoshafPage extends StatelessWidget {
   const MoshafPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    LanguageProvider provider = Provider.of<LanguageProvider>(context);
     return CustomScrollView(
       slivers: [
         SliverToBoxAdapter(
@@ -58,37 +54,48 @@ class MoshafPage extends StatelessWidget {
         ),
         SliverToBoxAdapter(
           child: Table(
-              border: TableBorder(
-                verticalInside: BorderSide(
-                  color: Theme.of(context).colorScheme.surface,
-                  width: 3,
-                ),
+            border: TableBorder(
+              verticalInside: BorderSide(
+                color: Theme.of(context).colorScheme.surface,
+                width: 3,
               ),
-              textBaseline: TextBaseline.alphabetic,
-              textDirection: TextDirection.rtl,
-              children: combinedList
-                  .map(
-                    (e) => TableRow(
-                  children: [
-                    InkWell(
+            ),
+            textBaseline: TextBaseline.alphabetic,
+            textDirection: TextDirection.rtl,
+            children: [
+              TableRow(
+                children: [
+                  ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: combinedList.length,
+                    itemBuilder: (context, index) => InkWell(
                       onTap: () {
                         Navigator.pushNamed(
                           context,
                           QuranDetails.routeName,
                           arguments: SurahData(
-                            e.numberOfAyat,
-                            e.name,
-                            e.numberOfSura,
+                            combinedList[index].numberOfAyat,
+                            combinedList[index].name,
+                            combinedList[index].numberOfSura,
                           ),
                         );
                       },
-                      child: BuildTableRow(txt: e.name),
+                      child: BuildTableRow(txt: combinedList[index].name),
                     ),
-                    BuildTableRow(txt: e.numberOfAyat.toString())
-                  ],
-                ),
-              )
-                  .toList()),
+                  ),
+                  ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: combinedList.length,
+                    itemBuilder: (context, index) => BuildTableRow(
+                      txt: "${combinedList[index].numberOfAyat}",
+                    ),
+                  )
+                ],
+              ),
+            ],
+          ),
         ),
       ],
     );

@@ -14,7 +14,7 @@ class LanguageBottomSheet extends StatelessWidget {
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.onSecondary,
         border: Border.all(
-          color: MyThemData.primryColor,
+          color: Theme.of(context).colorScheme.secondary,
           width: 2,
         ),
         borderRadius: BorderRadius.circular(20),
