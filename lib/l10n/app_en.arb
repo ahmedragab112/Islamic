@@ -11,5 +11,7 @@
   "theme": "Theming",
   "english": "English",
   "numberOfTasbeh": "Number Of Tasbeh",
-  "radioOfEthicsQuran": "Radio Of Ethics Quran"
+  "radioOfEthicsQuran": "Radio Of Ethics Quran",
+  "darkTheme": "Dark",
+  "lightTheme": "Light"
 }

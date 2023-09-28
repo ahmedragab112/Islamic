@@ -11,5 +11,7 @@
   "theme": "نسق",
   "english": "العربيه",
   "numberOfTasbeh": "عدد التسابيح",
-  "radioOfEthicsQuran": "إذاعة القرآن الكريم"
+  "radioOfEthicsQuran": "إذاعة القرآن الكريم",
+  "darkTheme": "غامق",
+  "lightTheme": "فاتح"
 }

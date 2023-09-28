@@ -14,9 +14,6 @@ void main() {
         ChangeNotifierProvider(
           create: (context) => LanguageProvider(),
         ),
-        // ChangeNotifierProvider(
-        //   create: (context) => SuraDetailsProvider(),
-        // ),
       ],
       child: const MyApp(),
     ),

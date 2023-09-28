@@ -1,28 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:islamic_app/model/hadith_model.dart';
 import 'package:islamic_app/model/my_them_data.dart';
 import 'package:islamic_app/pages/ahadth_details.dart';
+import 'package:islamic_app/providers/languae_provider.dart';
+import 'package:provider/provider.dart';
 
-class AhadethPage extends StatefulWidget {
+class AhadethPage extends StatelessWidget {
   const AhadethPage({super.key});
 
   @override
-  State<AhadethPage> createState() => _AhadethPageState();
-}
-
-class _AhadethPageState extends State<AhadethPage> {
-  List<HadaithModel> ahadthList = [];
-
-  @override
-  void initState() {
-    super.initState();
-    loadFile();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    LanguageProvider provider = Provider.of<LanguageProvider>(context);
+    provider.loadFile();
     return Center(
       child: CustomScrollView(
         slivers: [
@@ -55,14 +44,14 @@ class _AhadethPageState extends State<AhadethPage> {
               color: Theme.of(context).colorScheme.error,
             ),
           ),
-          ahadthList.isEmpty
+          provider.ahadthList.isEmpty
               ? const SliverToBoxAdapter(
-                  child: Center(
-                    child: CircularProgressIndicator(
-                      color: MyThemData.primryColor,
-                    ),
-                  ),
-                )
+            child: Center(
+              child: CircularProgressIndicator(
+                color: MyThemData.primryColor,
+              ),
+            ),
+          )
               : SliverList.separated(
             separatorBuilder: (context, index) => Divider(
                     endIndent: 40,
@@ -70,39 +59,32 @@ class _AhadethPageState extends State<AhadethPage> {
                     thickness: 2,
                     color: Theme.of(context).colorScheme.error,
                   ),
-                  itemBuilder: (context, index) => Center(
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(context, AhadethDetails.routeName,
-                            arguments: ahadthList[index]);
+            itemBuilder: (context, index) => Center(
+              child: InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, AhadethDetails.routeName,
+                            arguments: provider.ahadthList[index]);
                       },
-                      child: Text(
-                        ahadthList[index].title,
-                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                            color: Theme.of(context).colorScheme.onSecondary,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'assets/fonts/KOUFIBD.TTF'),
-                      ),
-                    ),
-                  ),
-                  itemCount: ahadthList.length,
-                )
+                child: Text(
+                  provider.ahadthList[index].title,
+                  style: Theme
+                      .of(context)
+                      .textTheme
+                      .bodySmall!
+                      .copyWith(
+                      color: Theme
+                          .of(context)
+                          .colorScheme
+                          .onSecondary,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'assets/fonts/KOUFIBD.TTF'),
+                ),
+              ),
+            ),
+            itemCount: provider.ahadthList.length,
+          )
         ],
       ),
     );
-  }
-
-  void loadFile() {
-    rootBundle.loadString('assets/files/ahadeth.txt').then((hadeth) {
-      List<String> hadethOne = hadeth.split('#');
-      for (int i = 0; i < hadethOne.length; i++) {
-        String firstHadeth = hadethOne[i];
-        List<String> lines = firstHadeth.trim().split('\n');
-        String title = lines[0];
-        lines.removeAt(0);
-        ahadthList.add(HadaithModel(contain: lines, title: title));
-        setState(() {});
-      }
-    }).catchError((e) {});
   }
 }
