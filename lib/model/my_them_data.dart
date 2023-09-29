@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyThemData {
   static const Color primryColor = Color(0xffB7935F);
@@ -29,29 +30,28 @@ class MyThemData {
         centerTitle: true,
         elevation: 0.0,
       ),
-      textTheme: const TextTheme(
+      textTheme: TextTheme(
         bodySmall: TextStyle(
           fontFamily: 'assets/fonts/ElMessiri-SemiBold.ttf',
           color: blackyColor,
-          fontSize: 20,
+          fontSize: 20.sp,
           fontWeight: FontWeight.w400,
         ),
         bodyMedium: TextStyle(
           fontFamily: 'assets/fonts/ElMessiri-SemiBold.ttf',
           color: whiteColor,
-          fontSize: 25,
+          fontSize: 25.sp,
           fontWeight: FontWeight.bold,
         ),
         bodyLarge: TextStyle(
           fontFamily: 'assets/fonts/ElMessiri-SemiBold.ttf',
           color: blackyColor,
-          fontSize: 30,
+          fontSize: 30.sp,
           fontWeight: FontWeight.bold,
         ),
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         elevation: 0.0,
-        type: BottomNavigationBarType.shifting,
         selectedItemColor: blackyColor,
         unselectedItemColor: Color(0xffF4F2EE),
       ));
@@ -77,29 +77,28 @@ class MyThemData {
       centerTitle: true,
       elevation: 0.0,
     ),
-    textTheme: const TextTheme(
+    textTheme: TextTheme(
       bodySmall: TextStyle(
         fontFamily: 'assets/fonts/ElMessiri-SemiBold.ttf',
-        color: Color(0xffFACC1D),
-        fontSize: 20,
+        color: yellow,
+        fontSize: 20.sp,
         fontWeight: FontWeight.w400,
       ),
       bodyMedium: TextStyle(
         fontFamily: 'assets/fonts/ElMessiri-SemiBold.ttf',
         color: whiteColor,
-        fontSize: 25,
+        fontSize: 25.sp,
         fontWeight: FontWeight.bold,
       ),
       bodyLarge: TextStyle(
         fontFamily: 'assets/fonts/ElMessiri-SemiBold.ttf',
         color: Colors.white,
-        fontSize: 30,
+        fontSize: 30.sp,
         fontWeight: FontWeight.bold,
       ),
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       elevation: 0.0,
-      type: BottomNavigationBarType.shifting,
       backgroundColor: darkPrimryColor,
       selectedItemColor: yellow,
       unselectedItemColor: Colors.white,

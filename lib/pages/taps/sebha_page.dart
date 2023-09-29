@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islamic_app/providers/languae_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -19,8 +20,8 @@ class SebhaPage extends StatelessWidget {
                 alignment: Alignment.center,
                 children: [
                   Container(
-                    padding: const EdgeInsets.only(top: 60),
-                    margin: const EdgeInsets.only(top: 20),
+                    padding: EdgeInsets.only(top: 60.h),
+                    margin: EdgeInsets.only(top: 20.h),
                     child: Transform.rotate(
                       angle: provider.angel,
                       child: Image.asset(
@@ -28,24 +29,24 @@ class SebhaPage extends StatelessWidget {
                             lightImage: 'assets/images/body_of_seb7a.png',
                             darkImage: 'assets/images/dark_body_of_seb7a.png'),
                         fit: BoxFit.fill,
-                        height: 200,
+                        height: 200.h,
                       ),
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 60.0),
+                    padding: EdgeInsets.only(top: 60.0.h),
                     child: Text(
                       '${provider.oneHundred}',
                       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                             color: Theme.of(context).colorScheme.error,
-                            fontSize: 100,
+                            fontSize: 100.sp,
                           ),
                     ),
                   )
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 40, bottom: 16),
+                padding: EdgeInsets.only(left: 40.w, top: 12.h),
                 child: Image.asset(
                   provider.getBackGround(
                       lightImage: 'assets/images/head_of_seb7a.png',

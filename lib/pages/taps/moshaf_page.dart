@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islamic_app/model/sura_model.dart';
 import 'package:islamic_app/pages/quran_details.dart';
 import 'package:islamic_app/widgets/build_table_row.dart';
@@ -14,13 +15,13 @@ class MoshafPage extends StatelessWidget {
         SliverToBoxAdapter(
           child: Image.asset(
             'assets/images/quran_image.png',
-            height: 220,
-            width: 205,
+            height: 220.h,
+            width: 205.w,
           ),
         ),
-        const SliverToBoxAdapter(
+        SliverToBoxAdapter(
           child: SizedBox(
-            height: 20,
+            height: 20.h,
           ),
         ),
         SliverToBoxAdapter(
@@ -28,15 +29,15 @@ class MoshafPage extends StatelessWidget {
             border: TableBorder(
               top: BorderSide(
                 color: Theme.of(context).colorScheme.surface,
-                width: 3,
+                width: 3.w,
               ),
               bottom: BorderSide(
                 color: Theme.of(context).colorScheme.surface,
-                width: 3,
+                width: 3.w,
               ),
               verticalInside: BorderSide(
                 color: Theme.of(context).colorScheme.surface,
-                width: 3,
+                width: 3.w,
               ),
             ),
             textBaseline: TextBaseline.alphabetic,
@@ -52,49 +53,37 @@ class MoshafPage extends StatelessWidget {
             ],
           ),
         ),
-        SliverToBoxAdapter(
-          child: Table(
-            border: TableBorder(
-              verticalInside: BorderSide(
-                color: Theme.of(context).colorScheme.surface,
-                width: 3,
-              ),
-            ),
-            textBaseline: TextBaseline.alphabetic,
-            textDirection: TextDirection.rtl,
-            children: [
-              TableRow(
+        SliverList.builder(
+          itemCount: combinedList.length,
+          itemBuilder: (context, index) => InkWell(
+            onTap: () {
+              Navigator.pushNamed(
+                context,
+                QuranDetails.routeName,
+                arguments: SurahData(
+                  combinedList[index].numberOfAyat,
+                  combinedList[index].name,
+                  combinedList[index].numberOfSura,
+                ),
+              );
+            },
+            child: IntrinsicHeight(
+              child: Row(
                 children: [
-                  ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: combinedList.length,
-                    itemBuilder: (context, index) => InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(
-                          context,
-                          QuranDetails.routeName,
-                          arguments: SurahData(
-                            combinedList[index].numberOfAyat,
-                            combinedList[index].name,
-                            combinedList[index].numberOfSura,
-                          ),
-                        );
-                      },
-                      child: BuildTableRow(txt: combinedList[index].name),
-                    ),
+                  Expanded(child: BuildTableRow(txt: combinedList[index].name)),
+                  VerticalDivider(
+                    color: Theme.of(context).colorScheme.surface,
+                    width: 3.w,
+                    thickness: 3,
                   ),
-                  ListView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: combinedList.length,
-                    itemBuilder: (context, index) => BuildTableRow(
+                  Expanded(
+                    child: BuildTableRow(
                       txt: "${combinedList[index].numberOfAyat}",
                     ),
-                  )
+                  ),
                 ],
               ),
-            ],
+            ),
           ),
         ),
       ],

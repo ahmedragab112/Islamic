@@ -13,8 +13,10 @@ class BuildTableRow extends StatelessWidget {
               child: Text(
                 txt,
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                    color: Theme.of(context).colorScheme.onSecondary,
-                    fontWeight: FontWeight.w600),
+                      color: Theme.of(context).colorScheme.onSecondary,
+                      fontWeight: FontWeight.w600,
+                    ),
+                textAlign: TextAlign.center,
               ),
             ),
           )

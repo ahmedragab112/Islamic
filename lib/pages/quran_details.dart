@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islamic_app/model/sura_model.dart';
 import 'package:islamic_app/providers/languae_provider.dart';
 import 'package:islamic_app/providers/sura_details_provider.dart';
@@ -38,8 +39,8 @@ class QuranDetails extends StatelessWidget {
                 ),
               ),
               body: Container(
-                margin: const EdgeInsets.only(
-                    top: 20, right: 20, left: 20, bottom: 50),
+                margin: EdgeInsets.only(
+                    top: 20.h, right: 20.w, left: 20.w, bottom: 50.h),
                 padding: const EdgeInsets.all(20),
                 width: double.infinity,
                 height: double.infinity,
@@ -73,7 +74,7 @@ class QuranDetails extends StatelessWidget {
                         ),
                         Icon(
                           Icons.play_circle_sharp,
-                          size: 30,
+                          size: 20.w,
                           color: Theme.of(context).colorScheme.secondary,
                         ),
                         const Spacer(
@@ -84,8 +85,8 @@ class QuranDetails extends StatelessWidget {
                     Divider(
                       color: Theme.of(context).colorScheme.surface,
                       thickness: 1,
-                      indent: 20,
-                      endIndent: 20,
+                      indent: 20.w,
+                      endIndent: 20.w,
                     ),
                     Expanded(
                       child: suraDetailsProvider.verses.isEmpty
@@ -97,8 +98,8 @@ class QuranDetails extends StatelessWidget {
                           : ListView.separated(
                               separatorBuilder: (context, index) => Divider(
                                 color: Theme.of(context).colorScheme.surface,
-                                indent: 30,
-                                endIndent: 30,
+                                indent: 30.w,
+                                endIndent: 30.w,
                               ),
                               itemBuilder: (context, index) => Center(
                                 child: Text(

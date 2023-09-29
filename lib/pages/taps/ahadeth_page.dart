@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islamic_app/model/my_them_data.dart';
 import 'package:islamic_app/pages/ahadth_details.dart';
 import 'package:islamic_app/providers/languae_provider.dart';
@@ -18,8 +19,8 @@ class AhadethPage extends StatelessWidget {
           SliverToBoxAdapter(
             child: Image.asset(
               'assets/images/ahadeth_image.png',
-              width: 300,
-              height: 200,
+              width: 300.w,
+              height: 200.h,
             ),
           ),
           SliverToBoxAdapter(

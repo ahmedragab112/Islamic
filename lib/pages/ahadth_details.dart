@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islamic_app/model/hadith_model.dart';
 import 'package:islamic_app/providers/languae_provider.dart';
 import 'package:provider/provider.dart';
@@ -21,6 +22,7 @@ class AhadethDetails extends StatelessWidget {
         Image.asset(
           provider.getBackGround(),
           width: double.infinity,
+          height: double.infinity,
           fit: BoxFit.fill,
         ),
         Scaffold(
@@ -39,8 +41,8 @@ class AhadethDetails extends StatelessWidget {
           body: Card(
             color: Theme.of(context).colorScheme.onPrimary,
             elevation: 10,
-            margin:
-                const EdgeInsets.only(top: 20, right: 20, left: 20, bottom: 50),
+            margin: EdgeInsets.only(
+                top: 20.h, right: 20.w, left: 20.w, bottom: 50.h),
             shape: OutlineInputBorder(
               borderSide:
                   const BorderSide(color: MyThemData.primryColor, width: 2),
@@ -69,7 +71,7 @@ class AhadethDetails extends StatelessWidget {
                       ),
                       Icon(
                         Icons.play_circle_sharp,
-                        size: 30,
+                        size: 20.w,
                         color: Theme.of(context).colorScheme.secondary,
                       ),
                       const Spacer(
@@ -80,8 +82,8 @@ class AhadethDetails extends StatelessWidget {
                   Divider(
                     color: Theme.of(context).colorScheme.surface,
                     thickness: 1,
-                    indent: 20,
-                    endIndent: 20,
+                    indent: 20.w,
+                    endIndent: 20.w,
                   ),
                   Expanded(
                     child: ListView.builder(

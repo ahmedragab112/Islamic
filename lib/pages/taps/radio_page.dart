@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 class RadioPage extends StatelessWidget {
   const RadioPage({super.key});
 
@@ -13,6 +15,7 @@ class RadioPage extends StatelessWidget {
         Image.asset(
           'assets/images/radio_image.png',
           width: double.infinity,
+          height: 200.h,
         ),
         const Spacer(
           flex: 1,
@@ -32,7 +35,7 @@ class RadioPage extends StatelessWidget {
             const Spacer(),
             Icon(
               Icons.skip_previous_sharp,
-              size: 35,
+              size: ScreenUtil().setWidth(35),
               color: Theme.of(context).colorScheme.error,
             ),
             const Spacer(
@@ -40,7 +43,7 @@ class RadioPage extends StatelessWidget {
             ),
             Icon(
               Icons.play_arrow,
-              size: 40,
+              size: ScreenUtil().setWidth(40),
               color: Theme.of(context).colorScheme.error,
             ),
             const Spacer(
@@ -48,7 +51,7 @@ class RadioPage extends StatelessWidget {
             ),
             Icon(
               Icons.skip_next_rounded,
-              size: 40,
+              size: ScreenUtil().setWidth(35),
               color: Theme.of(context).colorScheme.error,
             ),
             const Spacer()
