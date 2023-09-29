@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islamic_app/providers/languae_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -27,7 +28,7 @@ class HomePage extends StatelessWidget {
           ),
           body: provider.pageList[provider.indexOfScreen],
           bottomNavigationBar: BottomNavigationBar(
-            iconSize: 45,
+            iconSize: 30.w,
             onTap: (value) => provider.onChangedTap(value),
             currentIndex: provider.indexOfScreen,
             items: [

@@ -13,10 +13,10 @@ class ThemeingBottomSheet extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.secondary,
+        color: Theme.of(context).colorScheme.onSecondary,
         border: Border.all(
-          color: Theme.of(context).colorScheme.onSecondary,
-          width: 2,
+          color: Theme.of(context).colorScheme.error,
+          width: 4,
         ),
         borderRadius: BorderRadius.circular(20),
       ),
@@ -36,14 +36,14 @@ class ThemeingBottomSheet extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                       color: provider.mode == ThemeMode.light
                           ? MyThemData.primryColor
-                          : MyThemData.yellow),
+                          : Theme.of(context).colorScheme.secondary),
                 ),
                 provider.mode == ThemeMode.light
                     ? Icon(
-                        Icons.check,
+                  Icons.check,
                         color: provider.mode == ThemeMode.light
-                            ? MyThemData.yellow
-                            : MyThemData.primryColor,
+                            ? MyThemData.primryColor
+                            : Theme.of(context).colorScheme.secondary,
                         size: 35,
                       )
                     : const SizedBox.shrink(),
@@ -61,18 +61,18 @@ class ThemeingBottomSheet extends StatelessWidget {
                   'Dark',
                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                       color: provider.mode == ThemeMode.dark
-                          ? MyThemData.yellow
+                          ? Theme.of(context).colorScheme.error
                           : MyThemData.primryColor),
                 ),
                 provider.mode == ThemeMode.dark
-                    ? const SizedBox.shrink()
-                    : Icon(
+                    ? Icon(
                         Icons.check,
                         size: 35,
                         color: provider.mode == ThemeMode.dark
                             ? MyThemData.primryColor
-                            : MyThemData.yellow,
-                      ),
+                            : Theme.of(context).colorScheme.secondary,
+                      )
+                    : const SizedBox.shrink(),
               ],
             ),
           )

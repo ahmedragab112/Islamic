@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islamic_app/model/my_them_data.dart';
 import 'package:islamic_app/providers/languae_provider.dart';
 import 'package:provider/provider.dart';
@@ -28,8 +29,8 @@ class SettingPage extends StatelessWidget {
               provider.showLanguageBottomSheet(context);
             },
             child: Container(
-              margin: const EdgeInsets.only(left: 20),
-              padding: const EdgeInsets.symmetric(horizontal: 10),
+              margin: EdgeInsets.only(left: 20.w),
+              padding: EdgeInsets.symmetric(horizontal: 10.w),
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(25),
@@ -38,13 +39,13 @@ class SettingPage extends StatelessWidget {
               child: Text(
                 AppLocalizations.of(context)!.english,
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                  color: Theme.of(context).colorScheme.secondary,
-                ),
+                      color: Theme.of(context).colorScheme.secondary,
+                    ),
               ),
             ),
           ),
-          const SizedBox(
-            height: 20,
+          SizedBox(
+            height: 20.h,
           ),
           Text(
             AppLocalizations.of(context)!.theme,
@@ -59,8 +60,8 @@ class SettingPage extends StatelessWidget {
               provider.showThemeingBttomSheet(context);
             },
             child: Container(
-              margin: const EdgeInsets.only(left: 20),
-              padding: const EdgeInsets.symmetric(horizontal: 10),
+              margin: EdgeInsets.only(left: 20.w),
+              padding: EdgeInsets.symmetric(horizontal: 10.w),
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(25),
