@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 import '../model/hadith_model.dart';
 import '../pages/taps/ahadeth_page.dart';
 import '../pages/taps/moshaf_page.dart';
@@ -77,15 +76,11 @@ class LanguageProvider extends ChangeNotifier {
     }
   }
 
-  void showLanguageBottomSheet(BuildContext context) {
-    showModalBottomSheet(
+  void showLanguageBottomSheet(BuildContext context) => showModalBottomSheet(
         context: context, builder: (context) => const LanguageBottomSheet());
-  }
 
-  void showThemeingBttomSheet(BuildContext context) {
-    showModalBottomSheet(
+  void showThemeingBttomSheet(BuildContext context) => showModalBottomSheet(
         context: context, builder: (context) => const ThemeingBottomSheet());
-  }
 
   void sebhaLogic() {
     counter++;
