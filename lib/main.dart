@@ -8,16 +8,12 @@ import 'package:islamic_app/providers/languae_provider.dart';
 import 'package:islamic_app/widgets/bottom_navigation_bar.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  LanguageProvider provider = LanguageProvider();
+  await Future.wait([provider.cashTheme(), provider.cashLanguage()]);
   runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (context) => LanguageProvider(),
-        ),
-      ],
-      child: const MyApp(),
-    ),
+    ChangeNotifierProvider(create: (context) => provider, child: const MyApp()),
   );
 }
 
@@ -29,10 +25,10 @@ class MyApp extends StatelessWidget {
     LanguageProvider provider = Provider.of<LanguageProvider>(context);
     return ScreenUtilInit(
       builder: (context, child) => MaterialApp(
+        debugShowCheckedModeBanner: false,
         locale: Locale(provider.languageCode),
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
-        debugShowCheckedModeBanner: false,
         initialRoute: HomePage.routeName,
         routes: {
           HomePage.routeName: (context) => const HomePage(),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 import '../model/hadith_model.dart';
 import '../pages/taps/ahadeth_page.dart';
 import '../pages/taps/moshaf_page.dart';
@@ -11,6 +13,8 @@ import '../widgets/bottom_sheets/language_bottom_sheet.dart';
 import '../widgets/bottom_sheets/themeing_bottom_sheet.dart';
 
 class LanguageProvider extends ChangeNotifier {
+  SharedPreferences? preferences;
+
   String languageCode = 'en';
   ThemeMode mode = ThemeMode.light;
   int counter = 1;
@@ -26,6 +30,40 @@ class LanguageProvider extends ChangeNotifier {
     MoshafPage(),
     SettingPage()
   ];
+
+  Future<void> saveLanguage(String lang) async {
+    String language = lang == 'en' ? 'en' : 'ar';
+    await preferences!.setString('language', language);
+  }
+
+  Future<void> cashLanguage() async {
+    preferences = await SharedPreferences.getInstance();
+    String? oldLanguage = getLanguage();
+    if (oldLanguage != null) {
+      languageCode = oldLanguage == 'en' ? 'en' : 'ar';
+    }
+  }
+
+  String? getLanguage() {
+    return preferences!.getString('language');
+  }
+
+  Future<void> saveTheme(ThemeMode themeMode) async {
+    String theme = themeMode == ThemeMode.dark ? 'dark' : 'light';
+    await preferences!.setString('theme', theme);
+  }
+
+  Future<void> cashTheme() async {
+    preferences = await SharedPreferences.getInstance();
+    String? oldTheme = displayTheme();
+    if (oldTheme != null) {
+      mode = oldTheme == 'dark' ? ThemeMode.dark : ThemeMode.light;
+    }
+  }
+
+  String? displayTheme() {
+    return preferences!.getString('theme');
+  }
 
   void onChangedTap(int index) {
     indexOfScreen = index;
@@ -50,17 +88,18 @@ class LanguageProvider extends ChangeNotifier {
 
   void changeLanguage(String newLanguage) {
     languageCode = newLanguage;
+    saveLanguage(newLanguage);
     notifyListeners();
   }
 
   void changeThemMode(ThemeMode themeMode) {
     mode = themeMode;
+    saveTheme(themeMode);
     notifyListeners();
   }
 
-  String getBackGround(
-      {String lightImage = 'assets/images/background.png',
-      String darkImage = 'assets/images/darkbg.png'}) {
+  String getBackGround({String lightImage = 'assets/images/background.png',
+    String darkImage = 'assets/images/darkbg.png'}) {
     if (mode == ThemeMode.light) {
       return lightImage;
     } else {
@@ -77,10 +116,10 @@ class LanguageProvider extends ChangeNotifier {
   }
 
   void showLanguageBottomSheet(BuildContext context) => showModalBottomSheet(
-        context: context, builder: (context) => const LanguageBottomSheet());
+      context: context, builder: (context) => const LanguageBottomSheet());
 
   void showThemeingBttomSheet(BuildContext context) => showModalBottomSheet(
-        context: context, builder: (context) => const ThemeingBottomSheet());
+      context: context, builder: (context) => const ThemeingBottomSheet());
 
   void sebhaLogic() {
     counter++;
@@ -99,4 +138,3 @@ class LanguageProvider extends ChangeNotifier {
     notifyListeners();
   }
 }
-
