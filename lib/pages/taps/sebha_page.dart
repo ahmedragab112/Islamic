@@ -104,7 +104,7 @@ class SebhaPage extends StatelessWidget {
           ),
           const Spacer(
             flex: 5,
-          )
+          ), 
         ],
       ),
     );
