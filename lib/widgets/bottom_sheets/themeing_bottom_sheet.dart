@@ -15,10 +15,10 @@ class ThemeingBottomSheet extends StatelessWidget {
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.onSecondary,
         border: Border.all(
-          color: Theme.of(context).colorScheme.error,
-          width: 4,
+          color: Theme.of(context).colorScheme.secondary,
+          width: 2,
         ),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(8),
       ),
       height: MediaQuery.of(context).size.height * .2,
       child: Column(
@@ -36,7 +36,7 @@ class ThemeingBottomSheet extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                       color: provider.mode == ThemeMode.light
                           ? MyThemData.primryColor
-                          : Theme.of(context).colorScheme.secondary),
+                          : MyThemData.yellow),
                 ),
                 provider.mode == ThemeMode.light
                     ? Icon(
@@ -61,16 +61,16 @@ class ThemeingBottomSheet extends StatelessWidget {
                   'Dark',
                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                       color: provider.mode == ThemeMode.dark
-                          ? Theme.of(context).colorScheme.error
-                          : MyThemData.primryColor),
+                          ? MyThemData.primryColor
+                          : MyThemData.yellow),
                 ),
                 provider.mode == ThemeMode.dark
                     ? Icon(
-                        Icons.check,
+                  Icons.check,
                         size: 35,
                         color: provider.mode == ThemeMode.dark
-                            ? MyThemData.primryColor
-                            : Theme.of(context).colorScheme.secondary,
+                            ? MyThemData.yellow
+                            : MyThemData.primryColor,
                       )
                     : const SizedBox.shrink(),
               ],
