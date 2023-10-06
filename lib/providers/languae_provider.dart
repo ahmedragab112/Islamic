@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../model/hadith_model.dart';
 import '../pages/taps/ahadeth_page.dart';
 import '../pages/taps/moshaf_page.dart';
@@ -14,7 +13,6 @@ import '../widgets/bottom_sheets/themeing_bottom_sheet.dart';
 
 class LanguageProvider extends ChangeNotifier {
   SharedPreferences? preferences;
-
   String languageCode = 'en';
   ThemeMode mode = ThemeMode.light;
   int counter = 1;

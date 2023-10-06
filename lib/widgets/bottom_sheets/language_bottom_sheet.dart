@@ -12,12 +12,12 @@ class LanguageBottomSheet extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.onSecondary,
+        color: Theme.of(context).colorScheme.onError,
         border: Border.all(
           color: Theme.of(context).colorScheme.secondary,
           width: 2,
         ),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(8),
       ),
       height: MediaQuery.of(context).size.height * .2,
       child: Column(
@@ -39,10 +39,10 @@ class LanguageBottomSheet extends StatelessWidget {
                 ),
                 provider.languageCode == 'en'
                     ? const Icon(
-                  Icons.check,
-                  color: MyThemData.primryColor,
-                  size: 35,
-                )
+                        Icons.check,
+                        color: MyThemData.primryColor,
+                        size: 35,
+                      )
                     : const SizedBox.shrink(),
               ],
             ),
@@ -64,10 +64,10 @@ class LanguageBottomSheet extends StatelessWidget {
                 provider.languageCode == 'en'
                     ? const SizedBox.shrink()
                     : const Icon(
-                  Icons.check,
-                  size: 35,
-                  color: MyThemData.primryColor,
-                ),
+                        Icons.check,
+                        size: 35,
+                        color: MyThemData.primryColor,
+                      ),
               ],
             ),
           )
